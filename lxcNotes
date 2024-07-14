@@ -1,0 +1,38 @@
+apt install lxc
+
+lxc-checkconfig
+
+lxc-create --name lighttpd --template debian --dir /maxchroot/lighttpd/ -- -a i386
+
+lxc-ls
+
+lxc-ls --fancy
+
+lxc-start --name lighttpd
+
+lxc-attach --name lighttpd
+
+lxc-stop -name lighttpd
+
+lxc-destroy --name <name>
+
+lxc-info
+
+#in the container update and upgrade and install relevant packages
+
+# set firewall to allow connections and routes via the lxc bridge interface
+ufw allow in on lxcbr0
+ufw route allow in on lxcbr0
+ufw route allow out on lxcbr0
+
+#Set iptable for external access to container
+iptables -t nat -I PREROUTING -i wlan0 -p TCP -d 192.168.111.179 --dport 5000 -j DNAT --to-destination 10.0.3.189:80
+
+#autostart containers on boot
+echo "lxc.start.auto = 1" >>/etc/lxc/default.conf
+
+#Check lxc daemon status
+systemctl status lxc.service	start|stop|restart
+
+#Setup a volume on the host that is mapped to a location within the container
+
