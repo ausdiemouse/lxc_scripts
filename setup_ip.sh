@@ -4,7 +4,11 @@
 #iptables --list
 #iptables -L
 
-EXTIP=192.168.1.183
+EXTIP=$(ip a | grep enp | grep inet | awk '{print $2}'| sed 's/\/.*//')
+
+#EXTIP=$(ip a | grep -A2 "enp3s0" | grep "inet " | awk '{print $2}' | cut -d/ -f1)
+
+#EXTIP=192.168.1.183
 
 iptables -t nat -I PREROUTING -i enp3s0 -p TCP -d $EXTIP --dport 8001 -j DNAT --to-destination 10.0.3.119:80
 iptables -t nat -I PREROUTING -i enp3s0 -p TCP -d $EXTIP --dport 8002 -j DNAT --to-destination 10.0.3.56:80
