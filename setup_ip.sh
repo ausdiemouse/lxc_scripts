@@ -5,8 +5,15 @@
 #iptables --list
 #iptables -L
 
+# n/w interface capture starts ---------------
 #following line populates $EXTIP with the host ip automatically 
-EXTIP=$(ip a | grep enp | grep inet | awk '{print $2}'| sed 's/\/.*//')
+#EXTIP=$(ip a | grep enp | grep inet | awk '{print $2}'| sed 's/\/.*//')
+
+#following line populates $EXTIP with the host ip automatically on the wireless interface
+EXTIP=$(ip a | grep wlan | grep inet | awk '{print $2}'| sed 's/\/.*//')
+
+# n/w interface capture ends x-----------------x
+
 
 #this is alternative to the previous line
 #EXTIP=$(ip a | grep -A2 "enp3s0" | grep "inet " | awk '{print $2}' | cut -d/ -f1)
