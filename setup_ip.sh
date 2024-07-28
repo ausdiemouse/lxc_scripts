@@ -29,7 +29,7 @@ interface=$(ip a | grep -E "enp|wlan" | grep "state UP"| awk '{print $2; exit}'|
 echo "interface: $interface"
 echo "ip: $EXTIP"
 
-<<COMMENT
+
 #The following similar lines map the containers ip and ports to the host ip and port of choice for external access over the network
 #for ethernet interface and corresponding ip 	#need to re-write for ip block redundancy
 iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8001 -j DNAT --to-destination 10.0.3.119:80
@@ -39,7 +39,7 @@ iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8004 -j DNA
 iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 3000 -j DNAT --to-destination 10.0.3.55:3000
 iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8005 -j DNAT --to-destination 10.0.3.14:8080
 
-COMMENT
+
 
 #Reference of containers
 #NAME          STATE   AUTOSTART GROUPS IPV4       IPV6 UNPRIVILEGED 
