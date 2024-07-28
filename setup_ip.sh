@@ -22,7 +22,7 @@ EXTIP=$(ip a | grep -E "enp|wlan" | grep inet | awk '{print $2; exit}'| sed 's/\
 #improved spawns lesser processes -in AI we trust ... tested works. query:"more efficient and compact"
 interface=$(ip -o link show | awk -F': ' '/wlan|enp/ && /state UP/{print $2; exit}')
 
-# n/w interface capture ends x-----ls------------xd
+# n/w interface capture ends x-----------------x
 
 
 #this was the legacy manual update of the host ip
