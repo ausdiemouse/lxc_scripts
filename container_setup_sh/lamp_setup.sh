@@ -10,32 +10,34 @@
 cd ~
 
 #run the customary update upgrade
-    4  apt update
-    5  apt upgrade
+apt update
+apt upgrade
 
-#intsall ping
-    6  apt install ping
-    7  apt install iputils-ping
+#install ping
+apt install ping
+apt install iputils-ping
 #Install Apache2, Check status
-   16  apt update
-   17  apt install -y apache2 apache2-utils
-   18  apache2 -v
-   19  systemctl status apache2
+apt update
+apt install -y apache2 apache2-utils
+apache2 -v
+systemctl status apache2
 
 #Install maria-db/mysql
-   21  apt install -y mariadb-server mariadb-client
-   22  systemctl status mariadb
+apt install -y mariadb-server mariadb-client
+systemctl status mariadb
+
 #Secure the install
-   26  mysql_secure_installation
+mysql_secure_installation
+
 #   27  mysql -u root -p
 
 #install php
-   28  apt install php libapache2-mod-php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
-   29  a2enmod php8.2
-   30  php -v
-   31  echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+apt install php libapache2-mod-php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
+a2enmod php8.2
+php -v
+echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
-   36   curl localhost
+curl localhost
 
 #   41  uname -a
 #   45  lsb_release -a
