@@ -12,7 +12,7 @@ for container in $RUNNING_CONTAINERS; do
 
 #  lxc-attach --name $container -- apt update
 #  lxc-attach --name $container -- apt -y upgrade
-  lxc-attach --name $container -- < generic_cleanup.sh
+  lxc-attach --name $container -- < 0_generic_cleanup.sh
 
   echo "Updated $container."
   echo "-------------------"
