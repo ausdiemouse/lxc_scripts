@@ -12,7 +12,7 @@ RUNNING_CONTAINERS="$(lxc-ls)"
 
 for container in $RUNNING_CONTAINERS; do
   echo "Starting $container..."
-  lxc-start --name $container
+  sudo lxc-start --name $container
 done
 
 lxc-ls --fancy
