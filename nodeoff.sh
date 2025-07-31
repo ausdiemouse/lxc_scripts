@@ -1,1 +1,1 @@
-kill `pidof node`
+kill `pidof node` &
