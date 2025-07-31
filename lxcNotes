@@ -36,3 +36,9 @@ systemctl status lxc.service	start|stop|restart
 
 #Setup a volume on the host that is mapped to a location within the container
 
+
+# this line can be added to start_containers
+lxc-attach --name nodejs -- node /root/app.js &
+
+# this line can be added to stop containers
+lxc-attach --name nodejs -- < nodeoff.sh
