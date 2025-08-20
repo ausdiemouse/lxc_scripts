@@ -10,7 +10,7 @@ for container in $RUNNING_CONTAINERS; do
   echo "Fixing repository sources for $container..."
   
   # Run the fix_repos.sh script in the container
-  lxc-attach --name $container -- < fix_repos.sh
+  lxc-attach --name $container -- < fix_repos_script.sh
   
   echo "Fixed repository sources for $container."
   echo "-------------------------------------------"
