@@ -39,6 +39,7 @@ sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8003 -
 sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8004 -j DNAT --to-destination 10.0.3.35:8080
 sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 3000 -j DNAT --to-destination 10.0.3.55:3000
 sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8005 -j DNAT --to-destination 10.0.3.14:8080
+sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8006 -j DNAT --to-destination 10.0.3.195:5432
 
 
 #Reference of containers
@@ -50,3 +51,4 @@ sudo iptables -t nat -I PREROUTING -i $interface -p TCP -d $EXTIP --dport 8005 -
 #nginx         RUNNING 1         -      10.0.3.178 -    false        
 #tomcat        RUNNING 1         -      10.0.3.35  -    false        
 #nodejs        RUNNING 1         -      10.0.3.14  -    false        
+#postgres      RUNNING 1         -      10.0.3.195 -    false
